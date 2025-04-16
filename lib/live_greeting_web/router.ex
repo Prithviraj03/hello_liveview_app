@@ -18,7 +18,8 @@ defmodule LiveGreetingWeb.Router do
   scope "/", LiveGreetingWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", GreetingLive
+    # get "/", PageController, :home  # Comment out or remove this line
     live "/greet", GreetingLive
   end
 
