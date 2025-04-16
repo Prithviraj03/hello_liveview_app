@@ -1,13 +1,17 @@
-   services:
-     - type: web
-       name: live-greeting
-       env: elixir
-       buildCommand: mix deps.get && mix compile
-       startCommand: mix phx.server
-       envVars:
-         - key: SECRET_KEY_BASE
-           generateValue: true
-         - key: PHX_HOST
-           value: live-greeting.onrender.com
-         - key: PORT
-           value: 10000
+services:
+  - type: web
+    name: live-greeting
+    env: elixir
+    buildCommand: |
+      mix deps.get
+      cd assets && npm install
+      cd .. && mix compile
+      mix assets.deploy
+    startCommand: mix phx.server
+    envVars:
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: PHX_HOST
+        value: live-greeting.onrender.com
+      - key: PORT
+        value: 10000

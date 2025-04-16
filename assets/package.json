@@ -1,0 +1,14 @@
+{
+  "name": "live_greeting",
+  "version": "1.0.0",
+  "description": "Live Greeting Phoenix App",
+  "scripts": {
+    "deploy": "cd .. && mix assets.deploy",
+    "build": "cd .. && mix assets.build"
+  },
+  "dependencies": {
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view"
+  }
+} 
