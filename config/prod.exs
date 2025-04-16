@@ -6,7 +6,14 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :live_greeting, LiveGreetingWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "live-greeting.onrender.com", port: 443, scheme: "https"],
+  http: [port: String.to_integer(System.get_env("PORT") || "4000")],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: false,
+  code_reloader: false,
+  root: ".",
+  version: Application.spec(:phoenix, :vsn),
+  server: true
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: LiveGreeting.Finch
